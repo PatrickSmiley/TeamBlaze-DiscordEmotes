@@ -44,7 +44,7 @@
 | Quakecon | |  | |  |  | |"
 | ree |<img src='base/ree.png' width='32px'>  | Y | |  | <img src='winter/ree.png' width='32px'>  | Y|"
 | shadowrealm | |  | |  |  | |"
-| sidd | |  | |  |  | |"
+| sidd |<img src='base/sidd.png' width='32px'>  | Y | |  |  | |"
 | SURPRISE |<img src='base/SURPRISE.png' width='32px'>  | N | |  |  | |"
 | sweaty |<img src='base/sweaty.png' width='32px'>  | Y | |  |  | |"
 | tendies |<img src='base/tendies.png' width='32px'>  | Y | |  |  | |"
