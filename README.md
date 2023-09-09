@@ -4,7 +4,7 @@
 |------------|----|----|------|----|--------|----|
 | apes |<img src='base/apes.png' width='32px'>  | Y | | N/A | <img src='winter/apes.png' width='32px'>  | Y|"
 | badcat | | N/A | | N/A |  | N/A|"
-| bait | | Y | | N/A |  | N/A|"
+| bait |<img src='base/bait.png' width='32px'> | Y | | N/A |  | N/A|"
 | bigbrain |<img src='base/bigbrain.png' width='32px'>  | Y | | N/A |  | N/A|"
 | blz |<img src='base/blz.png' width='32px'>  | Y | | N/A |  | N/A|"
 | bongocat |<img src='base/bongocat.png' width='32px'>  | Y | |  | <img src='winter/bongocat.png' width='32px'>  | N|"
