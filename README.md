@@ -89,7 +89,9 @@ Change seasons by updating `CURRENT_SEASON` in `.env` to `base`, `fall`, or `win
 | poggers | <img src='emotes/base/poggers.png' width='32px'> | Y | <img src='emotes/fall/poggers.png' width='32px'> | Y | <img src='emotes/winter/poggers.png' width='32px'> | Y |
 | potato | <img src='emotes/base/potato.png' width='32px'> | Y | <img src='emotes/fall/potato.png' width='32px'> | Y | <img src='emotes/winter/potato.png' width='32px'> | Y |
 | pepe | | | | | <img src='emotes/winter/pepe.png' width='32px'> | |
+| Quakecon | | | | | | |
 | ree | <img src='emotes/base/ree.png' width='32px'> | Y | | | <img src='emotes/winter/ree.png' width='32px'> | Y |
+| shadowrealm | | | | | | |
 | sidd | <img src='emotes/base/sidd.png' width='32px'> | Y | | | | |
 | surprise | <img src='emotes/base/surprise.png' width='32px'> | N | | | | |
 | sweaty | <img src='emotes/base/sweaty.png' width='32px'> | Y | <img src='emotes/fall/sweaty.png' width='32px'> | | | |
