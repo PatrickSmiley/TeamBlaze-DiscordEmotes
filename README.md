@@ -4,7 +4,10 @@ Discord bot for managing seasonal custom emotes for Team Blaze.
 
 ## Features
 
-- Batch upload/update emotes from local folders to Discord
+- Sync emotes from local folders to Discord: adds missing emotes and swaps every emote that has a seasonal version on each run (uploads the new version before removing the old)
+- Reads `animated/` subfolders; skips files over Discord's 256 KB cap
+- A swap needs one free emote slot, since the new version is uploaded before the old one is removed. The full library is 55 static emotes, so the server needs boost level 1 (100 static slots)
+- Emotes without a seasonal version are only uploaded when missing: to refresh one, delete it on Discord and run again
 - Seasonal emote variants (base, fall, winter)
 - Send custom messages to Discord via command line
 - Automatic rate limiting to avoid Discord API limits
@@ -45,6 +48,11 @@ python bot.py "Hello Team Blaze!"
 
 Change seasons by updating `CURRENT_SEASON` in `.env` to `base`, `fall`, or `winter`.
 
+Check which files each season picks, without connecting to Discord:
+```bash
+python test_bot.py
+```
+
 ## Emote Gallery
 
 | Emote Name | Base | HD | Fall | HD | Winter | HD |
@@ -60,7 +68,7 @@ Change seasons by updating `CURRENT_SEASON` in `.env` to `base`, `fall`, or `win
 | comfypepo | <img src='emotes/base/comfypepo.png' width='32px'> | Y | <img src='emotes/fall/comfypepo.png' width='32px'> | Y | <img src='emotes/winter/comfypepo.png' width='32px'> | Y |
 | comfyyee | <img src='emotes/base/comfyyee.png' width='32px'> | Y | | | <img src='emotes/winter/comfyyee.png' width='32px'> | Y |
 | copium | <img src='emotes/base/copium.png' width='32px'> | N | | | <img src='emotes/winter/copium.png' width='32px'> | |
-| dafeels | | | <img src='emotes/fall/dafeels.png' width='32px'> | N | <img src='emotes/winter/dafeels.png' width='32px'> | N |
+| dafeels | <img src='emotes/base/dafeels.png' width='32px'> | | <img src='emotes/fall/dafeels.png' width='32px'> | N | <img src='emotes/winter/dafeels.png' width='32px'> | N |
 | dankmemes | <img src='emotes/base/dankmemes.png' width='32px'> | Y | <img src='emotes/fall/dankmemes.png' width='32px'> | Y | <img src='emotes/winter/dankmemes.png' width='32px'> | Y |
 | facepalm | <img src='emotes/base/facepalm.png' width='32px'> | Y | | | | N/A |
 | feelsbadman | <img src='emotes/base/feelsbadman.png' width='32px'> | N | <img src='emotes/fall/feelsbadman.png' width='32px'> | N | <img src='emotes/winter/feelsbadman.png' width='32px'> | N |
@@ -75,6 +83,7 @@ Change seasons by updating `CURRENT_SEASON` in `.env` to `base`, `fall`, or `win
 | monkas | <img src='emotes/base/monkas.png' width='32px'> | | | | <img src='emotes/winter/monkas.png' width='32px'> | |
 | nobully | <img src='emotes/base/nobully.png' width='32px'> | Y | | | <img src='emotes/winter/nobully.png' width='32px'> | Y |
 | overrustled | <img src='emotes/base/overrustled.png' width='32px'> | Y | | | <img src='emotes/winter/overrustled.png' width='32px'> | Y |
+| pepe | <img src='emotes/base/pepe.png' width='32px'> | | | | <img src='emotes/winter/pepe.png' width='32px'> | |
 | pepehands | <img src='emotes/base/pepehands.png' width='32px'> | Y | <img src='emotes/fall/pepehands.png' width='32px'> | Y | <img src='emotes/winter/pepehands.png' width='32px'> | Y |
 | pepejoke | <img src='emotes/base/pepejoke.png' width='32px'> | | | | | |
 | pepelaugh | <img src='emotes/base/pepelaugh.png' width='32px'> | Y | <img src='emotes/fall/pepelaugh.png' width='32px'> | Y | <img src='emotes/winter/pepelaugh.png' width='32px'> | Y |
@@ -88,15 +97,16 @@ Change seasons by updating `CURRENT_SEASON` in `.env` to `base`, `fall`, or `win
 | pikohh | <img src='emotes/base/pikohh.png' width='32px'> | Y | <img src='emotes/fall/pikohh.png' width='32px'> | Y | <img src='emotes/winter/pikohh.png' width='32px'> | Y |
 | poggers | <img src='emotes/base/poggers.png' width='32px'> | Y | <img src='emotes/fall/poggers.png' width='32px'> | Y | <img src='emotes/winter/poggers.png' width='32px'> | Y |
 | potato | <img src='emotes/base/potato.png' width='32px'> | Y | <img src='emotes/fall/potato.png' width='32px'> | Y | <img src='emotes/winter/potato.png' width='32px'> | Y |
-| pepe | | | | | <img src='emotes/winter/pepe.png' width='32px'> | |
-| Quakecon | | | | | | |
+| Quakecon | <img src='emotes/base/Quakecon.png' width='32px'> | | | | | |
 | ree | <img src='emotes/base/ree.png' width='32px'> | Y | | | <img src='emotes/winter/ree.png' width='32px'> | Y |
-| shadowrealm | | | | | | |
+| shadowrealm | <img src='emotes/base/shadowrealm.png' width='32px'> | | | | | |
 | sidd | <img src='emotes/base/sidd.png' width='32px'> | Y | | | | |
 | surprise | <img src='emotes/base/surprise.png' width='32px'> | N | | | | |
 | sweaty | <img src='emotes/base/sweaty.png' width='32px'> | Y | <img src='emotes/fall/sweaty.png' width='32px'> | | | |
 | tendies | <img src='emotes/base/tendies.png' width='32px'> | Y | | | | |
 | thinkies | <img src='emotes/base/thinkies.png' width='32px'> | N | <img src='emotes/fall/thinkies.png' width='32px'> | N | <img src='emotes/winter/thinkies.png' width='32px'> | N |
+| touchGrass | <img src='emotes/base/touchGrass.png' width='32px'> | | | | | |
+| tp | <img src='emotes/base/tp.png' width='32px'> | | | | | |
 | whataburger | <img src='emotes/base/whataburger.png' width='32px'> | Y | | | | |
 | wow | <img src='emotes/base/wow.png' width='32px'> | Y | | | <img src='emotes/winter/wow.png' width='32px'> | |
 | yee | <img src='emotes/base/yee.png' width='32px'> | Y | | | <img src='emotes/winter/yee.png' width='32px'> | Y |
@@ -107,5 +117,16 @@ Change seasons by updating `CURRENT_SEASON` in `.env` to `base`, `fall`, or `win
 
 | Emote Name | Base | Fall | Winter |
 |------------|------|------|--------|
+| catjam | <img src='emotes/base/animated/catjam.gif' width='32px'> | | |
 | huhh | <img src='emotes/base/animated/huhh.gif' width='32px'> | | |
+| lag | <img src='emotes/base/animated/lag.gif' width='32px'> | | |
+| pepesaber | <img src='emotes/base/animated/pepesaber.gif' width='32px'> | | |
+| pepewave | <img src='emotes/base/animated/pepewave.gif' width='32px'> | | |
+| pepoape | <img src='emotes/base/animated/pepoape.gif' width='32px'> | | |
+| pepofighting | <img src='emotes/base/animated/pepofighting.gif' width='32px'> | | |
+| pepokitty | <img src='emotes/base/animated/pepokitty.gif' width='32px'> | | |
+| petpepo | <img src='emotes/base/animated/petpepo.gif' width='32px'> | | |
 | ratjam | <img src='emotes/base/animated/ratjam.gif' width='32px'> | <img src='emotes/fall/animated/ratjam.gif' width='32px'> | <img src='emotes/winter/animated/ratjam.gif' width='32px'> |
+| ravedoge | <img src='emotes/base/animated/ravedoge.gif' width='32px'> | | |
+| ricardoFlick | <img src='emotes/base/animated/ricardoFlick.gif' width='32px'> | | |
+| vroomvroom | <img src='emotes/base/animated/vroomvroom.gif' width='32px'> | | |
